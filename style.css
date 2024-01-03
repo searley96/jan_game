@@ -1,0 +1,45 @@
+body {
+    background-color: #263a50;
+}
+
+#text {
+    background-color: #263a50;
+  color: #ceeffe;
+  padding: 10px;
+}
+
+#game {
+    max-width: 500px;
+    max-height: 400px;
+    background-color: #ceeffe;
+    color: #ceeffe;
+    margin: 30px auto 0px;
+    padding: 10px;
+  }
+
+  #controls,
+#stats {
+  border: 1px solid #1c222e;
+  padding: 5px;
+  color: #1c222e;
+}
+
+#yetiStats {
+    display: none;
+    border: 1px solid #1c222e;
+    padding: 5px;
+    color: #ceeffe;
+    background-color: #c70d0d;
+  }
+
+  .stat {
+    padding-right: 10px;
+  }
+
+  button {
+    cursor: pointer;
+    color: #1c222e;
+    background-color: #6a99bd;
+    background-image: linear-gradient(#6a99bd, #ceeffe);
+    border: 3px solid #6a99bd;
+  }
