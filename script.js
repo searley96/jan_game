@@ -26,3 +26,5 @@ const yetiHealthStats = document.querySelector("#yetiStats");
 const yetiName = document.querySelector("#yetiName");
 const yetiHealthText = document.querySelector("#yetiHealth");
 
+
+
