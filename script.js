@@ -15,7 +15,7 @@ let yetiHealth;
 //array containing players items
 let inventory = ["icicle"];
 
-const button1 = document.querySelector('#button1');
+const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const text = document.querySelector("#text");
@@ -26,5 +26,20 @@ const yetiHealthStats = document.querySelector("#yetiStats");
 const yetiName = document.querySelector("#yetiName");
 const yetiHealthText = document.querySelector("#yetiHealth");
 
+// initialize buttons
+button1.onclick = goStore;
+button2.onclick = goCave;
+button3.onclick = fightYeti;
 
+// functions
+function goStore() {
+  console.log("You are in store");
+}
 
+function goCave() {
+  console.log("You are in cave");
+}
+
+function fightYeti() {
+  console.log("You are in fight Yeti");
+}
