@@ -78,8 +78,19 @@ function fightYeti() {
   console.log("You are in fight Yeti");
 }
 
+// if you have 10 gold or more, you can buy health
+// on every button press, gold - 10, health + 10
+// new health and gold updated at stats
+// new text appears if you are out of money and can't buy health
 function buyHealth() {
-
+ if (gold >= 10) {
+  health += 10;
+  gold -= 10;
+  goldText.innerText = gold;
+  healthText.innerText = health;
+ } else {
+  text.innerText = "You do not have enough gold to buy health."
+ }
 };
 
 function buyWeapon() {
