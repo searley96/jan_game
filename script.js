@@ -46,6 +46,23 @@ const weapons = [
   },
 ];
 
+const monsters = [
+  {
+    name: "ice slime",
+    level: 2,
+    health: 15,
+  },
+  {
+    name: "ice bat",
+    level: 8,
+    health: 60,
+  },
+  { name: "yeti", 
+    level: 20, 
+    health: 300 
+  },
+];
+
 const locations = [
   {
     name: "town square",
