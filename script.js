@@ -57,10 +57,7 @@ const monsters = [
     level: 8,
     health: 60,
   },
-  { name: "yeti", 
-    level: 20, 
-    health: 300 
-  },
+  { name: "yeti", level: 20, health: 300 },
 ];
 
 const locations = [
@@ -72,11 +69,7 @@ const locations = [
   },
   {
     name: "store",
-    "button text": [
-      "Buy 10 health (10 gold)",
-      "Buy weapon (30 gold)",
-      "Go to village square",
-    ],
+    "button text": [ "Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to village square" ],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store.",
   },
@@ -104,22 +97,22 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
-}
+};
 
 function goStore() {
   console.log("You are in store");
   update(locations[1]);
   button4.style.display = "none";
-}
+};
 
 function goCave() {
   console.log("You are in cave");
   update(locations[2]);
-}
+};
 
-function fightYeti() {
-  console.log("You are in fight Yeti");
-}
+function goFight() {
+
+};
 
 // if you have 10 gold or more, you can buy health
 // on every button press, gold - 10, health + 10
@@ -134,7 +127,7 @@ function buyHealth() {
   } else {
     text.innerText = "You do not have enough gold to buy health.";
   }
-}
+};
 // can buy weapon if 30 gold or more
 // on every button press, gold - 30
 // new gold updated at stats
@@ -153,19 +146,46 @@ function buyWeapon() {
       text.innerText += " In your inventory you have: " + inventory + ".";
     } else {
       text.innerText = "You do not have enough gold to buy a weapon.";
-    }
+    } 
+  } else {
+    text.innerText = "You already have the most powerful weapon!"
+    button2.innerText = "Sell weapon for 15 gold."
+    button2.onclick = sellWeapon;
   }
-}
+};
+
+function sellWeapon() {
+  if (inventory > 1) {
+    gold -= 15;
+    goldText.innerText = gold;
+    currentWeapon = inventory.shift();
+    text.innerText = "You sold a: " + currentWeapon;
+    text.innerText += "In your inventory you have: " + inventory;
+  } else {
+    text.innerText = "Don't sell your only weapon!"
+  }
+};
 
 function goTown() {
   update(locations[0]);
   button4.style.display = "inline";
-}
+};
 
 function showInventory() {
   text.innerText = "In your inventory you have: " + inventory;
-}
+};
 
-function fightSlime() {}
+function fightSlime() {
+  fighting = 0;
+  goFight();
+};
 
-function fightBat() {}
+function fightBat() {
+  fighting = 1;
+  goFight();
+};
+
+function fightYeti() {
+  fighting = 2;
+  goFight();
+};
