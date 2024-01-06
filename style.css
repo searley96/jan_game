@@ -47,6 +47,10 @@ body {
     border: 3px solid #6a99bd;
   }
 
+  #button4 {
+    display: inline
+  }
+
 /* Style Snowballs and Snowflakes */
   
 .snow-ball-container .snow-ball { 
