@@ -75,7 +75,7 @@ const locations = [
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightYeti;
-// button4.onclick = showInventory;
+button4.onclick = showInventory;
 
 // functions
 
@@ -143,17 +143,12 @@ function buyWeapon() {
 function goTown() {
   update(locations[0]);
   button4.style.display = "inline";
-
 }
 
 function showInventory() {
- 
-};
+  text.innerText = "In your inventory you have: " + inventory;
+}
 
-function fightSlime() {
+function fightSlime() {}
 
-};
-
-function fightBat() {
-
-};
+function fightBat() {}
