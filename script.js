@@ -15,8 +15,6 @@ let monsterHealth;
 //array containing players items
 let inventory = ["icicle"];
 
-
-
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
@@ -62,6 +60,7 @@ const monsters = [
   { name: "yeti", level: 20, health: 300 },
 ];
 
+//array used to update button text, button functions, and on screen text on button click
 const locations = [
   {
     name: "town square",
@@ -71,7 +70,11 @@ const locations = [
   },
   {
     name: "store",
-    "button text": [ "Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to village square" ],
+    "button text": [
+      "Buy 10 health (10 gold)",
+      "Buy weapon (30 gold)",
+      "Go to village square",
+    ],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "You enter the store.",
   },
@@ -85,8 +88,8 @@ const locations = [
     name: "fight",
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
-    text: "You are fighting a monster."
-  }
+    text: "You are fighting a monster.",
+  },
 ];
 
 // initialize buttons
@@ -105,18 +108,16 @@ function update(location) {
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
-};
+}
 
 function goStore() {
-  console.log("You are in store");
   update(locations[1]);
   button4.style.display = "none";
-};
+}
 
 function goCave() {
-  console.log("You are in cave");
   update(locations[2]);
-};
+}
 
 // if you have 10 gold or more, you can buy health
 // on every button press, gold - 10, health + 10
@@ -131,7 +132,7 @@ function buyHealth() {
   } else {
     text.innerText = "You do not have enough gold to buy health.";
   }
-};
+}
 // can buy weapon if 30 gold or more
 // on every button press, gold - 30
 // new gold updated at stats
@@ -150,13 +151,13 @@ function buyWeapon() {
       text.innerText += " In your inventory you have: " + inventory + ".";
     } else {
       text.innerText = "You do not have enough gold to buy a weapon.";
-    } 
+    }
   } else {
-    text.innerText = "You already have the most powerful weapon!"
-    button2.innerText = "Sell weapon for 15 gold."
+    text.innerText = "You already have the most powerful weapon!";
+    button2.innerText = "Sell weapon for 15 gold.";
     button2.onclick = sellWeapon;
   }
-};
+}
 
 function sellWeapon() {
   if (inventory > 1) {
@@ -166,52 +167,59 @@ function sellWeapon() {
     text.innerText = "You sold a: " + currentWeapon;
     text.innerText += "In your inventory you have: " + inventory;
   } else {
-    text.innerText = "Don't sell your only weapon!"
+    text.innerText = "Don't sell your only weapon!";
   }
-};
+}
 
 function goTown() {
   update(locations[0]);
   button4.style.display = "inline";
-};
+}
 
 function showInventory() {
   text.innerText = "In your inventory you have: " + inventory;
-};
+}
 
 function fightSlime() {
   fighting = 0;
   goFight();
-};
+}
 
 function fightBat() {
   fighting = 1;
   goFight();
-};
+}
 
 function fightYeti() {
   fighting = 2;
   goFight();
-};
+}
 
 function goFight() {
-  update(locations[2]);
+  update(locations[3]);
   monsterHealth = monsters[fighting].health;
   monsterStats.style.display = "block";
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
-};
+}
 
 // updates text with monster name and current weapon name
 // removes health by monster's level
 // removes monster health based on current weapon power + random number between 1 and xp
 function attack() {
-text.innerText = "The " + monsters[fighting].name + " attacks!";
-text.innerText += "You attack it with your " + weapons[currentWeapon].name + "."
-health -= monsters[fighting].level;
-monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random()* xp) + 1;
-};
+  text.innerText = "The " + monsters[fighting].name + " attacks!";
+  text.innerText +=
+    " You attack it with your " + weapons[currentWeapon].name + ".";
+  health -= monsters[fighting].level;
+  monsterHealth -=
+    weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  }
+}
 
-function dodge() {
+function dodge() {}
 
-};
+function lose() {}
