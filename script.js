@@ -25,7 +25,7 @@ const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
-const monsterStats = document.querySelector("#yetiStats");
+const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 
@@ -189,11 +189,11 @@ function fightYeti() {
 };
 
 function goFight() {
-  update(locations[3]);
+  update(locations[2]);
   monsterHealth = monsters[fighting].health;
   monsterStats.style.display = "block";
   monsterName.innerText = monsters[fighting].name;
-  monsterHealth.innerText = monsterHealth;
+  monsterHealthText.innerText = monsterHealth;
 };
 
 // updates text with monster name and current weapon name
