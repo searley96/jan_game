@@ -81,6 +81,12 @@ const locations = [
     "button functions": [fightSlime, fightBat, goTown],
     text: "You enter the ice cave. You see some frosty monsters.",
   },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Run"],
+    "button functions": [attack, dodge, goTown],
+    text: "You are fighting a monster."
+  }
 ];
 
 // initialize buttons
@@ -204,4 +210,8 @@ text.innerText = "The " + monsters[fighting].name + " attacks!";
 text.innerText += "You attack it with your " + weapons[currentWeapon].name + "."
 health -= monsters[fighting].level;
 monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random()* xp) + 1;
+};
+
+function dodge() {
+
 };
