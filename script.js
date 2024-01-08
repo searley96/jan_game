@@ -95,6 +95,12 @@ const locations = [
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
     "button functions": [goTown, goTown, goTown],
     text: "The monster screams 'Arg!' as it dies. You gain experience points and find gold. Go back to town."
+  },
+  {
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You die. ☠️"
   }
 ];
 
@@ -233,7 +239,9 @@ function dodge() {
   text.innerText += " You dodge the attack from the " + monsters[fighting].name + ".";
 }
 
-function lose() {}
+function lose() {
+  update(locations[5]);
+}
 
 function defeatMonster() {
   gold += Math.floor(monsters[fighting].level * 6.7);
@@ -241,4 +249,15 @@ function defeatMonster() {
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
+}
+
+function restart() { 
+xp = 0;
+health = 100;
+gold = 50;
+inventory = ["icicle"];
+xpText.innerText = xp;
+goldText.innerText = gold;
+healthText.innerText = health;
+goTown();
 }
