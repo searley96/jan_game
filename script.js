@@ -9,11 +9,13 @@ let currentWeapon = 0;
 //indicates whether player is currently in fight
 let fighting;
 
-//represents health of yeti during fight
-let yetiHealth;
+//represents health of monsters during fight
+let monsterHealth;
 
 //array containing players items
 let inventory = ["icicle"];
+
+
 
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
@@ -23,9 +25,9 @@ const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
-const yetiHealthStats = document.querySelector("#yetiStats");
-const yetiName = document.querySelector("#yetiName");
-const yetiHealthText = document.querySelector("#yetiHealth");
+const monsterStats = document.querySelector("#yetiStats");
+const monsterName = document.querySelector("#monsterName");
+const monsterHealthText = document.querySelector("#monsterHealth");
 
 const weapons = [
   {
@@ -110,10 +112,6 @@ function goCave() {
   update(locations[2]);
 };
 
-function goFight() {
-
-};
-
 // if you have 10 gold or more, you can buy health
 // on every button press, gold - 10, health + 10
 // new health and gold updated at stats
@@ -188,4 +186,11 @@ function fightBat() {
 function fightYeti() {
   fighting = 2;
   goFight();
+};
+
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats.style.display = "block";
+  monsterName.innerText = monsters[fighting].name;
 };
