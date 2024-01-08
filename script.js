@@ -196,6 +196,9 @@ function goFight() {
   monsterHealth.innerText = monsterHealth;
 };
 
+// updates text with monster name and current weapon name
+// removes health by monster's level
+// removes monster health based on current weapon power + random number between 1 and xp
 function attack() {
 text.innerText = "The " + monsters[fighting].name + " attacks!";
 text.innerText += "You attack it with your " + weapons[currentWeapon].name + "."
