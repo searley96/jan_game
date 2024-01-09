@@ -18,7 +18,7 @@ let inventory = ["icicle"];
 const button1 = document.querySelector("#button1");
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
-const button4 = document.querySelector("#button4");
+// const button4 = document.querySelector("#button4");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
@@ -101,6 +101,12 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. ☠️"
+  },
+  {
+    name: "lwin",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You defeat the yeti! YOU WIN THE GAME! 🎉" 
   }
 ];
 
@@ -108,7 +114,7 @@ const locations = [
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightYeti;
-button4.onclick = showInventory;
+// button4.onclick = showInventory;
 
 // functions
 
@@ -125,7 +131,7 @@ function update(location) {
 
 function goStore() {
   update(locations[1]);
-  button4.style.display = "none";
+  // button4.style.display = "none";
 }
 
 function goCave() {
@@ -186,7 +192,7 @@ function sellWeapon() {
 
 function goTown() {
   update(locations[0]);
-  button4.style.display = "inline";
+  // button4.style.display = "inline";
 }
 
 function showInventory() {
@@ -231,7 +237,7 @@ function attack() {
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
-    defeatMonster();
+    fighting === 2 ? winGame() : defeatMonster();
   }
 }
 
@@ -261,3 +267,7 @@ goldText.innerText = gold;
 healthText.innerText = health;
 goTown();
 }
+
+function winGame() {
+update(locations[6])
+};
