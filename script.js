@@ -92,22 +92,26 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button text": [
+      "Go to town square",
+      "Go to town square",
+      "Go to town square",
+    ],
     "button functions": [goTown, goTown, goTown],
-    text: "The monster screams 'Arg!' as it dies. You gain experience points and find gold. Go back to town."
+    text: "The monster screams 'Arg!' as it dies. You gain experience points and find gold. Go back to town.",
   },
   {
     name: "lose",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: "You die. ☠️"
+    text: "You die. ☠️",
   },
   {
     name: "lwin",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: "You defeat the yeti! YOU WIN THE GAME! 🎉" 
-  }
+    text: "You defeat the yeti! YOU WIN THE GAME! 🎉",
+  },
 ];
 
 // initialize buttons
@@ -229,7 +233,7 @@ function attack() {
   text.innerText = "The " + monsters[fighting].name + " attacks!";
   text.innerText +=
     " You attack it with your " + weapons[currentWeapon].name + ".";
-  health -= monsters[fighting].level;
+  health -= getMonsterAttackValue(monsters[fighting].level);
   monsterHealth -=
     weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   healthText.innerText = health;
@@ -242,7 +246,8 @@ function attack() {
 }
 
 function dodge() {
-  text.innerText += " You dodge the attack from the " + monsters[fighting].name + ".";
+  text.innerText +=
+    " You dodge the attack from the " + monsters[fighting].name + ".";
 }
 
 function lose() {
@@ -257,17 +262,21 @@ function defeatMonster() {
   update(locations[4]);
 }
 
-function restart() { 
-xp = 0;
-health = 100;
-gold = 50;
-inventory = ["icicle"];
-xpText.innerText = xp;
-goldText.innerText = gold;
-healthText.innerText = health;
-goTown();
+function restart() {
+  xp = 0;
+  health = 100;
+  gold = 50;
+  inventory = ["icicle"];
+  xpText.innerText = xp;
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  goTown();
 }
 
 function winGame() {
-update(locations[6])
-};
+  update(locations[6]);
+}
+
+function getMonsterAttackValue(level) {
+  const hit = level * 5 - Math.floor(Math.random() * xp);
+}
