@@ -238,7 +238,7 @@ function attack() {
     monsterHealth -=
       weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   } else {
-    text.innerText += " You miss."
+    text.innerText += " You miss.";
   }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
@@ -246,6 +246,10 @@ function attack() {
     lose();
   } else if (monsterHealth <= 0) {
     fighting === 2 ? winGame() : defeatMonster();
+  }
+  if (Math.random() <= 0.1 && inventory.length !== 1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+    currentWeapon--;
   }
 }
 
@@ -288,5 +292,21 @@ function getMonsterAttackValue(level) {
 }
 
 function isMonsterHit() {
-  return Math.random() > .2
+  return Math.random() > 0.2 || health < 20;
+}
+
+function easterEgg() {
+  update(locations[7])
+}
+
+function pickTwo() {
+  pick(2)
+}
+
+function pickEight() {
+  pick(8)
+}
+
+function pick(guess) {
+
 }
