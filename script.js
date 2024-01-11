@@ -296,17 +296,23 @@ function isMonsterHit() {
 }
 
 function easterEgg() {
-  update(locations[7])
+  update(locations[7]);
 }
 
 function pickTwo() {
-  pick(2)
+  pick(2);
 }
 
 function pickEight() {
-  pick(8)
+  pick(8);
 }
 
+//pick a random number between 0 and 10
+//push number to end of numbers array
+//run loop while length of array is less than 10
 function pick(guess) {
-
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11))
+  }
 }
